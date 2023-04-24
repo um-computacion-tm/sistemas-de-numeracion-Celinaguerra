@@ -9,48 +9,27 @@ def binario2decimal(bin):
     decimal = str(decimal)
     return decimal
 
-def binario2octal(bin):
-    bin = str(bin)
+def octal2decimal (oct):
+    oct = str(oct)
     decimal = 0
     potencia = 0
-    for i in range(len(bin)-1,-1,-1):
-        if bin[i] == "1":
-            decimal += 2**potencia
+    for i in range(len(oct)-1,-1,-1):
+        decimal += int(oct[i]) * 8**potencia
         potencia += 1
-    resultado = ""
-    octal = ""
-    while decimal >=8:
-        resto = decimal % 8
-        decimal = decimal // 8
-        div = str(resto)
-        resultado += div
-    resultado += str(decimal)
-    octal = resultado[::-1]
-    return octal
+    decimal = str(decimal)
+    return decimal
 
-def binario2hexadecimal(bin):
-    bin = str(bin)
+def hexadecimal2decimal(hex):
+    hex = str(hex)
     decimal = 0
     potencia = 0
-    for i in range(len(bin)-1,-1,-1):
-        if bin[i] == "1":
-            decimal += 2**potencia
+    hex_dict = {
+        '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
+        '8': 8, '9': 9, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15
+    }
+    hex_dict_inv = {v: k for k, v in hex_dict.items()}
+    for i in range(len(hex)-1,-1,-1):
+        decimal += hex_dict[hex[i]] * 16**potencia
         potencia += 1
-    hexadecimal = ""
-    resultado = ""
-    hex_dict = {10: "A", 11: "B", 12: "C", 13: "D", 14: "E", 15: "F"}
-    while decimal >= 16:
-        resto = decimal % 16
-        decimal = decimal // 16
-        
-        if resto in hex_dict:
-            div = hex_dict[resto]
-        else:
-            div = str(resto)
-        resultado += div
-    if decimal in hex_dict:
-        resultado += hex_dict[decimal]
-    else:
-        resultado += str(decimal)
-    hexadecimal = resultado[::-1]
-    return hexadecimal
+    decimal = str(decimal)
+    return decimal
