@@ -4,6 +4,8 @@ from dec2binocthex import decimal2octal
 from dec2binocthex import decimal2hexadecimal
 
 from bin2dec import binario2decimal
+from bin2dec import binario2octal
+from bin2dec import binario2hexadecimal
 
 class TestNumeracion(unittest.TestCase):
 
@@ -62,6 +64,33 @@ class TestNumeracion(unittest.TestCase):
         self.assertEqual(binario2decimal(10101001),"169")
 
 ###################################################################
+
+    def test1_binario2octal(self):
+        self.assertEqual(binario2octal(1101),"15")
+
+    def test2_binario2octal(self):
+        self.assertEqual(binario2octal(11000100),"304")
+
+    def test3_binario2octal(self):
+        self.assertEqual(binario2octal(11111010),"372")
+
+    def test4_binario2octal(self):
+        self.assertEqual(binario2octal(10101001),"251")
+
+###################################################################
+
+    def test1_binario2hexadecimal(self):
+        self.assertEqual(binario2hexadecimal(1101),"D")
+
+    def test2_binario2hexadecimal(self):
+        self.assertEqual(binario2hexadecimal(11000100),"C4")
+
+    def test3_binario2hexadecimal(self):
+        self.assertEqual(binario2hexadecimal(11111010),"FA")
+
+    def test4_binario2hexadecimal(self):
+        self.assertEqual(binario2hexadecimal(10101001),"A9")
+
 
 if __name__ == "__main__":
     unittest.main()
